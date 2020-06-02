@@ -13,7 +13,8 @@ class Guardar extends Component {
       match: { params: { usu_id, tar_id } },
       tareas,
       cambioUsuarioID,
-      cambioTitulo
+      cambioTitulo,
+      limpiarForm
     } = this.props
 
     if (usu_id && tar_id) {
@@ -21,6 +22,8 @@ class Guardar extends Component {
       console.log('Guardar :: tarea ::', tarea)
       cambioUsuarioID(tarea.userId)
       cambioTitulo(tarea.title)
+    } else {
+      limpiarForm()
     }
     console.log('Guardar :: componentDidMount ::', this.props)
   }
