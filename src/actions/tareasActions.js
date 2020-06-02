@@ -6,7 +6,8 @@ import {
   CAMBIO_USUARIO_ID,
   CAMBIO_TITULO,
   GUARDAR,
-  ACTUALIZAR
+  ACTUALIZAR,
+  LIMPIAR_FORM
 } from '../types/tareasTypes'
 
 export const getTareas = () => async (dispatch) => {
@@ -27,7 +28,7 @@ export const getTareas = () => async (dispatch) => {
       }
     ))
 
-    console.log('getTareas ::', tareas)
+    // console.log('getTareas ::', tareas)
 
     dispatch({
       type: GET_TAREAS,
@@ -118,5 +119,32 @@ export const cambioCheck = (usu_id, tar_id) => (dispatch, getState) => {
   dispatch({
     type: ACTUALIZAR,
     payload: actualizadas
+  })
+}
+
+export const eliminar = (tar_id) => async (dispatch) => {
+  dispatch({
+    type: CARGANDO
+  })
+
+  try {
+    const respuesta = await axios.delete (`https://jsonplaceholder.typicode.com/todos/${tar_id}`)
+    console.log('eliminar ::', respuesta)
+    dispatch({
+      type: GET_TAREAS,
+      payload: {}
+    })
+  } catch (error) {
+    console.log('eliminar :: error::', error.message)
+    dispatch({
+      type: ERROR,
+      payload: 'Servicio no disponible.'
+    })
+  }
+}
+
+export const limpiarForm = () => (dispatch) => {
+  dispatch({
+    type: LIMPIAR_FORM
   })
 }
