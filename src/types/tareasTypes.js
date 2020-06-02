@@ -1,0 +1,7 @@
+export const GET_TAREAS = 'traer_tareas'
+export const CARGANDO = 'cargando_tareas'
+export const ERROR = 'error_tareas'
+export const CAMBIO_USUARIO_ID = 'cambio_usuario_id_tareas'
+export const CAMBIO_TITULO = 'cambio_titulo_tareas'
+export const GUARDAR = 'guardar_tareas'
+export const ACTUALIZAR = 'actualizar_tareas'
