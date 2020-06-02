@@ -16,7 +16,7 @@ export const getUsuarios = () => async (dispatch) => {
     console.log('error ::', error.message)
     dispatch({
       type: ERROR,
-      payload: error.message
+      payload: 'Información de Usuario no disponible.'
     })
   }
 }
